@@ -1,7 +1,8 @@
 <template>
   <div class="chatRoomBox" :class="{'newMessage':newMessage}">
-    <span v-if="!showRoom" class="door" @click="showRoom=true;IsAddRoom=true"><img src="./img/chatRoom_show.png"
-                                                                                   alt=""></span>
+    <span v-if="!showRoom" class="door" @click="showRoom=true;IsAddRoom=true">
+      <!--<img src="./img/chatRoom_show.png" alt="">-->
+    </span>
     <div v-if="IsAddRoom" class="chatRoom" :class="{'closeRoom':!showRoom}" @mouseenter="mouseenter()"
          @mouseleave="mouseout()">
       <!--<span class="close" @click="showRoom=false">X</span>-->
@@ -72,9 +73,9 @@
 
   //读cookie
   function getCookie(name) {
+	  var strcookie = document.cookie;//获取cookie字符串
     if (strcookie) {
       var arrcookie = strcookie.split("; ");//分割
-      var strcookie = document.cookie;//获取cookie字符串
       //遍历匹配
       for (var i = 0; i < arrcookie.length; i++) {
         var arr = arrcookie[i].split("=");
@@ -256,6 +257,7 @@
         this.websocket = io.connect(location.origin.replace('http', 'ws') + '/message/chat?sessionId=' + getCookie("sso_session_uid"));
         this.websocket.on('connect', function () {
           console.log("成功链接")
+	        typeof (that.res) !== 'function' && (console.log("推送消息回调函数名称：res"))
         });
         this.websocket.on('connect_error', function () {
           console.log("链接错误")
