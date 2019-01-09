@@ -1,7 +1,6 @@
 <template>
     <div id="app">
-      <h1>123</h1>
-      <chatRoom></chatRoom>
+      <chatRoom :res="res"></chatRoom>
     </div>
 </template>
 
@@ -15,7 +14,12 @@
 		data() {
 			return {
 			}
-		}
+		},
+    methods:{
+      res(data){
+        console.log(data)
+      }
+    }
 	}
 </script>
 
