@@ -1,7 +1,9 @@
 <template>
   <div class="alan_input">
-    <b @click="inputData=''">x</b>
-    <input type="text" v-model="inputData">
+    <div class="box">
+      <input type="text" v-model="inputData">
+      <!--<b>x</b>-->
+    </div>
   </div>
 </template>
 
@@ -24,9 +26,6 @@
 </script>
 
 <style lang='less' scoped>
-  *{
-    box-sizing: border-box;
-  }
   .alan_input {
     display: inline-block;
     position: relative;

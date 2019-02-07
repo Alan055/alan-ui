@@ -1,0 +1,67 @@
+//函数
+// 边框颜色
+.bor(@col) {
+  border: 1px solid @col;
+}
+// 弹性布局居中样式
+.flexBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//统一滚动条样式
+.al_scorll(){
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    background: @themeColor;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 0;
+    background: #edeff1;
+  }
+}
+//统一导航条样式  小木条
+.al_navWood{
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background: @themeColor;
+    z-index: 10;
+  }
+}
+
+
+// 变量
+@themeColor: #2d8cf0; // 主题颜色--一些按钮背景色  字体颜色
+@borColor: #dcdee2; // 边框的默认颜色
+@fontColor: #515a6e; // 字体颜色
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

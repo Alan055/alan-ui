@@ -1,7 +1,10 @@
 var path = require('path')
 var webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const utils = require('./utils') // 引入vue-loader的配置项
 const NODE_ENV = process.env.NODE_ENV
-
+const isProduction = NODE_ENV === 'production'
+// const sourceMapEnabled = isProduction ?
 module.exports = {
   // entry: './src/main.js',
 	// 根据不同的执行环境配置不同的入口
@@ -23,19 +26,34 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
+        // 为了添加全局less变量文件  必须加入这个插件 这个options里面都是新增的
         options: {
-          loaders: {
-          }
-          // other vue-loader options go here
+          loaders: utils.cssLoaders({
+            sourceMap: true,
+            extract: isProduction,
+          }),
+          cssSourceMap: true,
+          cacheBusting: true,
+          transformToRequire: {
+            video: ['src', 'poster'],
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          },
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -60,7 +78,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -80,6 +98,11 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+    // 为了添加全局less变量文件  必须加入这个插件
+    new ExtractTextPlugin({
+      filename: path.posix.join('static', 'css/[name].[contenthash].css'),
+      allChunks: true,
+    }),
   ])
 }

@@ -258,6 +258,7 @@
         this.websocket.on('connect', function () {
           console.log("成功链接")
 	        typeof (that.res) !== 'function' && (console.log("推送消息回调函数名称：res"))
+          console.log("如果不想在推送系统中展示出来就在res回调返回的data中设置hide为true！")
         });
         this.websocket.on('connect_error', function () {
           console.log("链接错误")
@@ -275,6 +276,8 @@
         this.websocket.on('notice', function (data) {
           // 出发回调事件，发到父组件中去 --便于使用  开发者就不需要来操作这个组件的源文件了
           typeof (that.res) == 'function' && that.res(data) //  先要判断一下这个res是否存在  如果不存在的话就不要发了
+          // 如果不想在推送系统里面展示出来就在父组件中设置data的hide为true
+          if(data.hide) return
           // 处理数据结构
           let obj = {
             title: data.title,

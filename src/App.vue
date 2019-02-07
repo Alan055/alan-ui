@@ -1,15 +1,18 @@
 <template>
     <div id="app">
       <chatRoom :res="res"></chatRoom>
+      <!--<alan_pagination></alan_pagination>-->
+      <alan_pagination :total="55" :current="4" />
     </div>
 </template>
 
 <script>
 	import chatRoom from "./components/socket_pc/socket_pc";
+  import Alan_pagination from "./components/pagination/pagination";
 
 
 	export default {
-		components: {chatRoom},
+		components: {Alan_pagination, chatRoom},
 		name: 'app',
 		data() {
 			return {
@@ -23,7 +26,7 @@
 	}
 </script>
 
-<style>
+<style lang="less">
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -49,5 +52,8 @@
 
     a {
         color: #42b983;
+    }
+    *{
+      box-sizing: border-box;
     }
 </style>
