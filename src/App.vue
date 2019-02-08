@@ -2,7 +2,7 @@
     <div id="app">
       <chatRoom :res="res"></chatRoom>
       <!--<alan_pagination></alan_pagination>-->
-      <alan_pagination :total="55" :current="4" />
+      <alan_pagination :total="8" :current="page" :onChange="tt" />
     </div>
 </template>
 
@@ -16,11 +16,15 @@
 		name: 'app',
 		data() {
 			return {
+        page: 1,
 			}
 		},
     methods:{
       res(data){
         console.log(data)
+      },
+      tt(i){
+        this.page = i
       }
     }
 	}

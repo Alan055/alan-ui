@@ -1,7 +1,19 @@
+// 变量
+@themeColor: #2d8cf0; // 主题颜色--一些按钮背景色  字体颜色
+@borColor: #dcdee2; // 边框的默认颜色
+@fontColor: #515a6e; // 字体颜色
+
 //函数
 // 边框颜色
 .bor(@col) {
   border: 1px solid @col;
+}
+// 鼠标移入时边框逐渐变色
+.borHover(){
+  &:hover{
+    border-color: @themeColor;
+    transition: border 0.5s;
+  }
 }
 // 弹性布局居中样式
 .flexBox{
@@ -39,14 +51,6 @@
     z-index: 10;
   }
 }
-
-
-// 变量
-@themeColor: #2d8cf0; // 主题颜色--一些按钮背景色  字体颜色
-@borColor: #dcdee2; // 边框的默认颜色
-@fontColor: #515a6e; // 字体颜色
-
-
 
 
 
