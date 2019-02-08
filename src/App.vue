@@ -27,27 +27,27 @@
                 citylist: [
                     {
                     value: 'beijing',
-                    label: '������'
+                    label: '北京市'
                     },
                     {
                     value: 'shanghai',
-                    label: '�Ϻ���'
+                    label: '上海市'
                     },
                     {
                     value: 'shenzhen',
-                    label: '������'
+                    label: '深圳市'
                     },
                     {
                     value: 'hangzhou',
-                    label: '������'
+                    label: '杭州市'
                     },
                     {
                     value: 'nanjing',
-                    label: '�Ͼ���'
+                    label: '南京市'
                     },
                     {
                     value: 'chongqing',
-                    label: '������'
+                    label: '重庆市'
                     }
                 ]
 			}
