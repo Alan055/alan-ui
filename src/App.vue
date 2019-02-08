@@ -3,6 +3,7 @@
       <chatRoom :res="res"></chatRoom>
       <!--<alan_pagination></alan_pagination>-->
       <!-- <alan_pagination :total="55" :current="4" /> -->
+      <!-- <alan_pagination :total="8" :current="page" :onChange="tt" /> -->
       <select_box :optionlist="citylist"></select_box>
     </div>
 </template>
@@ -22,39 +23,43 @@
 		name: 'app',
 		data() {
 			return {
+                page:1,
                 citylist: [
                     {
                     value: 'beijing',
-                    label: '北京市'
+                    label: '������'
                     },
                     {
                     value: 'shanghai',
-                    label: '上海市'
+                    label: '�Ϻ���'
                     },
                     {
                     value: 'shenzhen',
-                    label: '深圳市'
+                    label: '������'
                     },
                     {
                     value: 'hangzhou',
-                    label: '杭州市'
+                    label: '������'
                     },
                     {
                     value: 'nanjing',
-                    label: '南京市'
+                    label: '�Ͼ���'
                     },
                     {
                     value: 'chongqing',
-                    label: '重庆市'
+                    label: '������'
                     }
                 ]
 			}
 		},
-        methods:{
-            res(data){
-                console.log(data)
-            }
-        }
+    methods:{
+      res(data){
+        console.log(data)
+      },
+      tt(i){
+        this.page = i
+      }
+    }
 	}
 </script>
 
