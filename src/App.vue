@@ -2,27 +2,59 @@
     <div id="app">
       <chatRoom :res="res"></chatRoom>
       <!--<alan_pagination></alan_pagination>-->
-      <alan_pagination :total="55" :current="4" />
+      <!-- <alan_pagination :total="55" :current="4" /> -->
+      <select_box :optionlist="citylist"></select_box>
     </div>
 </template>
 
 <script>
 	import chatRoom from "./components/socket_pc/socket_pc";
   import Alan_pagination from "./components/pagination/pagination";
+  import select_box from "./components/select_box/Select";
 
 
 	export default {
-		components: {Alan_pagination, chatRoom},
+		components: {
+            Alan_pagination,
+            chatRoom,
+            select_box
+        },
 		name: 'app',
 		data() {
 			return {
+                citylist: [
+                    {
+                    value: 'beijing',
+                    label: '北京市'
+                    },
+                    {
+                    value: 'shanghai',
+                    label: '上海市'
+                    },
+                    {
+                    value: 'shenzhen',
+                    label: '深圳市'
+                    },
+                    {
+                    value: 'hangzhou',
+                    label: '杭州市'
+                    },
+                    {
+                    value: 'nanjing',
+                    label: '南京市'
+                    },
+                    {
+                    value: 'chongqing',
+                    label: '重庆市'
+                    }
+                ]
 			}
 		},
-    methods:{
-      res(data){
-        console.log(data)
-      }
-    }
+        methods:{
+            res(data){
+                console.log(data)
+            }
+        }
 	}
 </script>
 
