@@ -2,6 +2,7 @@ import alan_input from "./components/input/index.js";
 import chatRoom from "./components/socket_pc/index.js";
 import alan_pagination from "./components/pagination/index.js";
 import select_box from "./components/select_box/index.js";
+import alan_icon from "./components/icon/index.js";
 
 
 const components = [
@@ -9,6 +10,7 @@ const components = [
 	chatRoom,
   alan_pagination,
   select_box,
+  alan_icon,
 	// ...如果还有的话继续添加
 ];
 
@@ -29,6 +31,6 @@ export default {
 	chatRoom,
 	alan_pagination,
 	select_box,
-
+  alan_icon,
 	// ...如果还有的话继续添加
 }
