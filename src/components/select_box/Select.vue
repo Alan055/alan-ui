@@ -1,13 +1,20 @@
 <template>
     <div class="wrap">
-        <!-- .sync：子组件is-show值改变后，父组件is-show值立马改变 -->
-        <select-input :is-show.sync="listShow" :title="title"></select-input>
-        <list 
+        <!-- <select-input :is-show.sync="listShow" :title="title"></select-input> -->
+        <!-- <list 
             v-show="listShow"
             :data="listData" 
             :input-val.sync="title"
             :is-show.sync="listShow"
-            @changeTitle="titleHandle" ></list>
+            @changeTitle="titleHandle" ></list> -->
+        <div class="selectInput" >
+            <input type="text" readonly placeholder="请选择" :value="title" @click="showListHandle" :class="listShow?'active':''">
+            <img src="./icon_the_drop-down@3x.png" alt="" class="icon_drop" :class="listShow?'icon_drop_active':''">
+        </div>
+        <div class="list" v-show="listShow"
+            :data="listData" :input-val.sync="title" :is-show.sync="listShow" @changeTitle="titleHandle">
+            <p v-for="(item,idx) in data" :key="idx" @click="getTitleHandle(item,idx)" :class="idx===active?'active':''">{{item.label}}</p>
+        </div>
     </div>
 </template>
 <script>
@@ -49,6 +56,15 @@
             List
         },
         methods:{
+            showListHandle(){
+                // this.$emit('update:isShow',this.initShow)
+            },
+            getTitleHandle(item,i){
+                // this.$emit('update:inputVal',item.name)
+                // this.$emit('update:isShow',this.initShow)
+                this.active = i
+                // this.$emit('changeTitle',{name:item.label,initShow:this.initShow})
+            },
             titleHandle(val){
                 // console.log(val)
                 this.title = val.name
