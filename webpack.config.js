@@ -55,6 +55,11 @@ module.exports = {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
       },
+      // 编译字体文件
+      {
+        test: /\.(eot|woff|ico|svg|ttf|woff2|gif)(\?|$)/,
+        loader: 'file-loader?name=[hash].[ext]'
+      },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',

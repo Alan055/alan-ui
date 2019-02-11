@@ -1,27 +1,33 @@
 <template>
   <div class="alan_input">
-    <div class="box" :style="`width:${width}px;`" tabindex="1">
-      <input type="text" v-model="inputData" @keyup.enter="enter&&enter(inputData)" >
-      <em class="" v-if="icon"></em>
+    <div class="box" :style="`width:${width}px;`">
+      <input type="text" v-model="inputData" @keyup.enter.stop  ="enter&&enter(inputData)" :class="{'hasIcon':boxIcon}">
+      <Icon class="boxIcon" v-if="boxIcon" :type="boxIcon" size="18" :on-click="hand"></Icon>
     </div>
   </div>
 </template>
 
 <script>
+  import Icon from "./../icon/icon";
+
+
   export default {
     name: 'alan_input',
     props: {
       width: {type: Number, default: 200}, // 输入框的宽度  默认200px
       value: {}, // 默认值
       icon: {type: String, default: ''}, // 右侧的小图标
-      limit: {type: Array, default: []}, // 输入框限制的条件  有中文  数子、整数  英文  四个条件 Number zh en int
+      limit: {type: Array, default: ()=>{return []}}, // 输入框限制的条件  有中文  数子、整数  英文  四个条件 Number zh en int
       enter: {type: Function,}, // 输入框的回车事件
+      onClick: {type: Function,}, // icon图标的点击事件
       maxlen: {type: Number,}, // 允许输入的最大长度
       maxvalue: {type: Number,}, // 允许输入的最大数字 说明这里只能输入数字
     },
+    components:{Icon},
     data() {
       return {
         inputData: this.value,
+        boxIcon: this.icon
       }
     },
     computed: {},
@@ -30,6 +36,7 @@
         this.inputData = val
       },
       inputData(cur, bef) {
+        if(this.limit.length === 0) return
         // 先校验长度
         if(this.maxlen && String(cur).length > this.maxlen){
           this.inputData = bef
@@ -72,6 +79,9 @@
       }
     },
     methods: {
+      hand(){
+        this.onClick && this.onClick()
+      }
     },
     created() {
     },
@@ -84,11 +94,10 @@
   .alan_input {
     .flexBox();
     padding: 0 4px;
-
     .box {
       .flexBox();
       width: 100px;
-
+      position: relative;
       input {
         padding: 0 7px;
         width: 100%;
@@ -99,15 +108,17 @@
         border-radius: 4px;
         height: 32px;
         .borHover();
-
+        &.hasIcon{
+          padding-right: 28px;
+        }
         &:focus {
           border-color: @themeColor;
-          box-shadow: 0px 0px 2px #d9e9fc;
+          box-shadow: 0px 0px 0px 2px #d9e9fc;
         }
       }
-
-      em {
-
+      .boxIcon {
+        position: absolute;
+        right: 8px;
       }
     }
   }

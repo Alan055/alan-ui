@@ -40,6 +40,7 @@
     box-shadow: 0 1px 6px rgba(0,0,0,.2);
     position: absolute;
     z-index: 900;
+    .al_scorll();
     p{
         margin: 0;
         padding: 7px 5px;
