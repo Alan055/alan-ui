@@ -36,7 +36,7 @@
         this.inputData = val
       },
       inputData(cur, bef) {
-        if(this.limit.length === 0) return
+        if(this.limit.length === 0||this.inputData === '') return
         // 先校验长度
         if(this.maxlen && String(cur).length > this.maxlen){
           this.inputData = bef
