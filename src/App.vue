@@ -13,7 +13,7 @@
 <script>
   // import chatRoom from "./components/socket_pc/socket_pc";
   // import Alan_pagination from "./components/pagination/pagination";
-  import select_box from "./components/select_box/Select";
+  import select_box from "./components/select/Select";
   import icon from "./components/icon/icon";
   import alan_input from "./components/input/input";
 

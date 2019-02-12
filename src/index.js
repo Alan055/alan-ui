@@ -1,7 +1,7 @@
 import alan_input from "./components/input/index.js";
 import chatRoom from "./components/socket_pc/index.js";
 import alan_pagination from "./components/pagination/index.js";
-import select_box from "./components/select_box/index.js";
+import select_box from "./components/select/index.js";
 import alan_icon from "./components/icon/index.js";
 
 
